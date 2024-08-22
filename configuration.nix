@@ -62,11 +62,6 @@
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
 
-  boot.tmp.useTmpfs = true;
-  systemd.services.nix-daemon = {
-    environment.TMPDIR = "/var/tmp";
-  };
-
   networking.wireless.enable = false;
 
   networking.timeServers = options.networking.timeServers.default ++ [ "0.nl.pool.ntp.org" "1.nl.pool.ntp.org" ];
@@ -92,7 +87,7 @@
   };
 
   users.users = {
-    maarten = {
+    bla = {
       extraGroups = [ "wheel" ];
       initialPassword = "paratodostodo";
       isNormalUser = true;
