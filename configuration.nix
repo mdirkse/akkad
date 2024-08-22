@@ -92,7 +92,7 @@
       initialPassword = "paratodostodo";
       isNormalUser = true;
       openssh.authorizedKeys.keys = ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCcUcPxEtlNoXBg6jvIeqr/3hc9GgQplrQtyd215bi5cDIeo7qx6INlOhrZ/M88TN1/HllRi/ygWZWwUxL2aruzB2jLmbN2cGpAeQFH1u8daZT0GtZv4Iu7426k5UXEjd6QxtJEXMUeg8czN9fB7aqntjfl7uVmVl/cozqbM7bF00F8MCKGERpWjglDsuqC7qcK8kMVmcgoe8cGpffj+2zUL/HiMZptJN2GXpN7kDIKUNrUezFLG1osH2lAeox6W6tEG18w+UtgQ4qSEs4ob9MdQBOMgv/8RuAft9ma4yxrEKoy8+ogKacuy6gU/U5Y7ulAS6TWqto+8VKQyRm/vfc5 maarten@lagash"];
-      shell = pkgs.fish;
+      #shell = pkgs.fish;
     };
   };
 
