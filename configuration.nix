@@ -36,7 +36,11 @@
   networking.networkmanager.enable = true;
 
   services.openssh = {
-    allowSFTP = false; # Don't set this if you need sftp
+    settings = {
+      allowSFTP = false; # Don't set this if you need sftp
+      kbdInteractiveAuthentication = false;
+      PasswordAuthentication = false;
+    };
     extraConfig = ''
       AllowTcpForwarding yes
       X11Forwarding no
@@ -44,8 +48,6 @@
       AllowStreamLocalForwarding no
       AuthenticationMethods publickey
     '';
-    kbdInteractiveAuthentication = false;
-    PasswordAuthentication = false;
   };
 
   boot.loader.efi.canTouchEfiVariables = true;
