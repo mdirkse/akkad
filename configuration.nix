@@ -36,9 +36,7 @@
   networking.networkmanager.enable = true;
 
   services.openssh = {
-    passwordAuthentication = false;
     allowSFTP = false; # Don't set this if you need sftp
-    challengeResponseAuthentication = false;
     extraConfig = ''
       AllowTcpForwarding yes
       X11Forwarding no
@@ -46,6 +44,8 @@
       AllowStreamLocalForwarding no
       AuthenticationMethods publickey
     '';
+    kbdInteractiveAuthentication = false;
+    PasswordAuthentication = false;
   };
 
   boot.loader.efi.canTouchEfiVariables = true;
@@ -78,7 +78,7 @@
     allowedTCPPorts = [ 22 443 1880 8123 ];
   };
 
-  nix.allowedUsers = [ "@wheel" ];
+  nix.settings.allowed-users = [ "@wheel" ];
 
   documentation.man.enable = false;
 
