@@ -87,7 +87,7 @@
   };
 
   users.users = {
-    bla = {
+    maarten = {
       extraGroups = [ "wheel" ];
       initialPassword = "paratodostodo";
       isNormalUser = true;
