@@ -39,7 +39,7 @@
     enable = true;
     settings = {
       allowSFTP = false; # Don't set this if you need sftp
-      kbdInteractiveAuthentication = false;
+      KbdInteractiveAuthentication = false;
       PasswordAuthentication = false;
     };
     extraConfig = ''
