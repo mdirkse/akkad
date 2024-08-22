@@ -35,8 +35,18 @@
   networking.hostName = "akkad";
   networking.networkmanager.enable = true;
 
-  services.openssh.enable = true;
-  services.openssh.settings.PermitRootLogin = "yes";
+  services.openssh = {
+    passwordAuthentication = false;
+    allowSFTP = false; # Don't set this if you need sftp
+    challengeResponseAuthentication = false;
+    extraConfig = ''
+      AllowTcpForwarding yes
+      X11Forwarding no
+      AllowAgentForwarding no
+      AllowStreamLocalForwarding no
+      AuthenticationMethods publickey
+    '';
+  };
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = false;
@@ -49,6 +59,11 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
+
+  boot.tmp.useTmpfs = true;
+  systemd.services.nix-daemon = {
+    environment.TMPDIR = "/var/tmp";
+  };
 
   networking.wireless.enable = false;
 
@@ -63,26 +78,34 @@
     allowedTCPPorts = [ 22 443 1880 8123 ];
   };
 
+  nix.allowedUsers = [ "@wheel" ];
+
   documentation.man.enable = false;
 
   time.timeZone = "Europe/Amsterdam";
+
+  system.switch = {
+    enable = false;
+    enableNg = true;
+  };
 
   users.users = {
     maarten = {
       extraGroups = [ "wheel" ];
       initialPassword = "paratodostodo";
       isNormalUser = true;
+      openssh.authorizedKeys.keys = ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCcUcPxEtlNoXBg6jvIeqr/3hc9GgQplrQtyd215bi5cDIeo7qx6INlOhrZ/M88TN1/HllRi/ygWZWwUxL2aruzB2jLmbN2cGpAeQFH1u8daZT0GtZv4Iu7426k5UXEjd6QxtJEXMUeg8czN9fB7aqntjfl7uVmVl/cozqbM7bF00F8MCKGERpWjglDsuqC7qcK8kMVmcgoe8cGpffj+2zUL/HiMZptJN2GXpN7kDIKUNrUezFLG1osH2lAeox6W6tEG18w+UtgQ4qSEs4ob9MdQBOMgv/8RuAft9ma4yxrEKoy8+ogKacuy6gU/U5Y7ulAS6TWqto+8VKQyRm/vfc5 maarten"];
       shell = pkgs.fish;
     };
   };
 
-  # security.sudo.extraRules = [{
-  #   users = [ "maarten" ];
-  #   commands = [{
-  #     command = "ALL";
-  #     options = [ "SETENV" ];
-  #   }];
-  # }];
+  security.sudo.extraRules = [{
+    users = [ "maarten" ];
+    commands = [{
+      command = "ALL";
+      options = [ "SETENV" "NOPASSWD" ];
+    }];
+  }];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion  # You can import other home-manager modules here
   system.stateVersion = "23.11";
