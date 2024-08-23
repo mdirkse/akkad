@@ -36,9 +36,9 @@
   networking.networkmanager.enable = true;
 
   services.openssh = {
+    allowSFTP = false; # Don't set this if you need sftp
     enable = true;
     settings = {
-      allowSFTP = false; # Don't set this if you need sftp
       KbdInteractiveAuthentication = false;
       PasswordAuthentication = false;
     };
