@@ -1,0 +1,3 @@
+[submodule "modules/modules/nixos-secrets"]
+	path = modules/modules/nixos-secrets
+	url = git@github.com:mdirkse/nixos-secrets.git
