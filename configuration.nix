@@ -12,6 +12,7 @@
     ./modules/caddy/module.nix
     ./modules/home-assistant/module.nix
     ./modules/node-red/module.nix
+    ./modules/system/module.nix
     ./modules/terminal/module.nix
   ];
 
