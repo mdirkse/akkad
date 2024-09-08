@@ -65,10 +65,6 @@
     allowedTCPPorts = [ 22 443 1880 8123 ];
   };
 
-  nix.settings.allowed-users = [ "@wheel" ];
-
-  documentation.man.enable = false;
-
   time.timeZone = "Europe/Amsterdam";
 
   system.switch = {
