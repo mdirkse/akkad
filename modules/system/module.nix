@@ -25,13 +25,13 @@
     '';
   };
 
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.enable = false;
-  boot.loader.systemd-boot.enable = true;
-  boot.supportedFilesystems = [ "zfs" ];
-
-  boot.kernel.sysctl."fs.inotify.max_user_watches" = 524288;
-  boot.kernel.sysctl."net.ipv4.ip_forward" = 0;
+  boot = {
+    kernel.sysctl."fs.inotify.max_user_watches" = 524288;
+    loader.efi.canTouchEfiVariables = true;
+    loader.grub.enable = false;
+    loader.systemd-boot.enable = true;
+    supportedFilesystems = [ "zfs" ];
+  };
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
