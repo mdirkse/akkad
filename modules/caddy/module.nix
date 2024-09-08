@@ -4,7 +4,7 @@
   in {
     services.caddy = {
       enable = true;
-      virtualHosts."akkad.%{fqdn}".extraConfig = ''
+      virtualHosts."akkad.%{secrets.fqdn}".extraConfig = ''
       encode gzip
       file_server
       root * ${
