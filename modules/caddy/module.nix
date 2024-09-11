@@ -11,18 +11,15 @@
         auto_https off
       '';
 
-      virtualHosts."akkad.${secrets.fqdn}".extraConfig = ''
-      reverse_proxy /ha/* localhost:8123
-      reverse_proxy /nr/* localhost:1880
+      virtualHosts."ha.${secrets.fqdn}".extraConfig = ''
+        reverse_proxy * localhost:8123
+        tls /etc/ssl/${secrets.fqdn}.crt /etc/ssl/${secrets.fqdn}.key
+      '';
 
-      @not-known {
-	      not path /ha/* /nr/*
-      }
-
-      redir @not-known /ha/ permanent
-
-      tls /etc/ssl/${secrets.fqdn}.crt /etc/ssl/${secrets.fqdn}.key
-    '';
+      virtualHosts."nr.${secrets.fqdn}".extraConfig = ''
+        reverse_proxy * localhost:1880
+        tls /etc/ssl/${secrets.fqdn}.crt /etc/ssl/${secrets.fqdn}.key
+      '';
     };
   }
 
