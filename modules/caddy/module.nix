@@ -19,7 +19,7 @@
 	      not path /ha/* /nr/*
       }
 
-      redir @not-known /ha permanent
+      redir @not-known /ha/ permanent
 
       tls /etc/ssl/${secrets.fqdn}.crt /etc/ssl/${secrets.fqdn}.key
     '';
