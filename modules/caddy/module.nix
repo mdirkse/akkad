@@ -4,6 +4,7 @@
   in {
     services.caddy = {
       enable = true;
+      enableReload = false; # Reload won't work as the admin API is turned off
 
       globalConfig = ''
         admin off
@@ -11,7 +12,6 @@
       '';
 
       virtualHosts."akkad.${secrets.fqdn}".extraConfig = ''
-      encode gzip
       reverse_proxy /ha/* localhost:8123
       reverse_proxy /nr/* localhost:1880
 
@@ -20,6 +20,8 @@
       }
 
       redir @not-known /ha permanent
+
+      tls /etc/ssl/${secrets.fqdn}.crt /etc/ssl/${secrets.fqdn}.key
     '';
     };
   }
