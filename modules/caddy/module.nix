@@ -12,13 +12,14 @@
 
       virtualHosts."akkad.${secrets.fqdn}".extraConfig = ''
       encode gzip
-      file_server
-      root * ${
-        pkgs.runCommand "testdir" {} ''
-          mkdir "$out"
-          echo hello world > "$out/example.html"
-        ''
+      reverse_proxy /ha/* localhost:8123
+      reverse_proxy /nr/* localhost:1880
+
+      @not-known {
+	      not path /ha/* /nr/*
       }
+
+      redir @not-known /ha permanent
     '';
     };
   }
