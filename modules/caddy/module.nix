@@ -11,6 +11,15 @@
         auto_https off
       '';
 
+      virtualHosts."akkad.${secrets.fqdn}".extraConfig = ''
+        log {
+          output file /var/log/caddy/ha.log {
+            roll_keep 0
+          }
+	      }
+        respond 418
+      '';
+
       virtualHosts."ha.${secrets.fqdn}".extraConfig = ''
         log {
           output file /var/log/caddy/ha.log {
