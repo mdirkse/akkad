@@ -5,7 +5,7 @@
     enableIPv6 = false;
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 443 1880 8123 ];
+      allowedTCPPorts = [ 22 443 ];
     };
     hostId = "bf663db0";
     hostName = "akkad";
