@@ -1,8 +1,9 @@
 { inputs, lib, config, options, pkgs, ... }: {
+  boot.kernelParams = ["ipv6.disable=1"];
   boot.kernel.sysctl."net.ipv4.ip_forward" = 0;
 
   networking = {
-    enableIPv6 = true;
+    enableIPv6 = false;
     firewall = {
       enable = true;
       allowedTCPPorts = [ 22 443 ];
