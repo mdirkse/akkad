@@ -2,7 +2,7 @@
   boot.kernel.sysctl."net.ipv4.ip_forward" = 0;
 
   networking = {
-    enableIPv6 = false;
+    enableIPv6 = true;
     firewall = {
       enable = true;
       allowedTCPPorts = [ 22 443 ];
