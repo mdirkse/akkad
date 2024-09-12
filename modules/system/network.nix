@@ -11,6 +11,7 @@
     hostName = "akkad";
     networkmanager.enable = true;
     timeServers = options.networking.timeServers.default ++ [ "0.nl.pool.ntp.org" "1.nl.pool.ntp.org" ];
+    useDHCP = lib.mkDefault true;
     wireless.enable = false;
   };
 }
