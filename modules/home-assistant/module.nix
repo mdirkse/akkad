@@ -21,8 +21,8 @@
     };
   };
 
-  #services.zwave-js = {
-  #  enable = true;
-  #  serialPort = "/dev/ttyUSB0";
-  #};
+  services.zwave-js = {
+   enable = true;
+   serialPort = "/dev/ttyUSB0";
+  };
 }
