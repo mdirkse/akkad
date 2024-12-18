@@ -24,5 +24,6 @@
   services.zwave-js = {
    enable = true;
    serialPort = "/dev/ttyUSB0";
+   secretsConfigFile = "../secrets/zwave-keys.json";
   };
 }
