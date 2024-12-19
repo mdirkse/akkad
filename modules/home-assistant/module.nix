@@ -1,5 +1,5 @@
 { inputs, lib, config, pkgs, ... }: let
-  zwave_keys = home-assistant/zwave-keys.json;
+  zwave_keys = "home-assistant/zwave-keys.json";
 in {
   environment.etc."${zwave_keys}".source = ../secrets/zwave-keys.json;
 
