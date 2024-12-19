@@ -1,11 +1,11 @@
 { inputs, lib, config, pkgs, ... }: let
   zwave_keys = "home-assistant/zwave-keys.json";
 in {
-  environment.etc."${zwave_keys}" {
+  environment.etc."${zwave_keys}" = {
     mode = "0400";
     source = ../secrets/zwave-keys.json;
     user = "hass";
-  }
+  };
 
   services.home-assistant = {
     enable = true;
