@@ -1,7 +1,7 @@
 { inputs, lib, config, pkgs, ... }: let
   zwave_keys = home-assistant/zwave-keys.json;
 in {
-  environment.etc."bla".source = ../secrets/zwave-keys.json;
+  environment.etc."${zwave_keys}".source = ../secrets/zwave-keys.json;
 
   services.home-assistant = {
     enable = true;
@@ -28,6 +28,6 @@ in {
   services.zwave-js = {
    enable = true;
    serialPort = "/dev/ttyUSB0";
-   secretsConfigFile = "/etc/";
+   secretsConfigFile = "/etc/${zwave_keys}";
   };
 }
