@@ -2,4 +2,4 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-git pull origin main --recurse-submodules && sudo nixos-rebuild switch --flake ".?submodules=1#pi"
+nixos-rebuild switch --flake ".?submodules=1#pi"  --target-host maarten@akkad --use-remote-sudo --verbose
