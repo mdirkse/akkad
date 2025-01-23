@@ -7,6 +7,7 @@
 
   boot = {
     kernel.sysctl."fs.inotify.max_user_watches" = 524288;
+    #kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
     loader.efi.canTouchEfiVariables = true;
     loader.grub.enable = false;
     loader.systemd-boot.enable = true;
